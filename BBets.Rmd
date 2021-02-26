@@ -70,6 +70,30 @@ favstats(saveBank)
 # What size of class makes the 2:1 bet fair?  
 <!--Explain and display the results of your method of coming up with the estimate of professor Brownlows betting profits!-->
 
+```{r}
+classSize = 28
+winAmount=1
+loseAmount= 2.00
+
+test = vector('numeric')
+saveBank=vector('numeric')
+for (j in 1:30){
+  bank=0
+for(i in 1:637){
+test = sample(URN, size=classSize, replace=TRUE)
+ifelse(length(unique(test))==classSize, (bank=bank-loseAmount),(bank=bank+winAmount))
+saveBank[j] = bank
+}
+}
+hist(saveBank)
+
+```
+
+```{r}
+favstats(saveBank)
+```
+
+The number of students to make a fair bet would be about 28.
 
 # In the class and payoff as described what is a 95% confidence interval for Brownlow's earnings?
   
